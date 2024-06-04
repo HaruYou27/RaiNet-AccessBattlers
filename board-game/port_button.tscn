@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://xppx78ic84bw"]
+
+[ext_resource type="FontFile" uid="uid://ba5i5dbj3bcwl" path="res://board-game/NotoMonoNerdFontMono-Regular.ttf" id="1_oge84"]
+
+[sub_resource type="Theme" id="Theme_hq123"]
+default_font = ExtResource("1_oge84")
+
+[node name="PortButton" type="Button"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = SubResource("Theme_hq123")
+text = "󰈀"

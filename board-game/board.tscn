@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://71ys478gwh0c"]
+[gd_scene load_steps=9 format=3 uid="uid://71ys478gwh0c"]
 
 [ext_resource type="Shader" path="res://board-game/matrix-rain.gdshader" id="1_8h4js"]
+[ext_resource type="Script" path="res://board-game/board-gameplay.gd" id="1_j8wmw"]
 [ext_resource type="Texture2D" uid="uid://cn0j1i5ssag20" path="res://board-game/characters.png" id="2_q1b2k"]
+[ext_resource type="PackedScene" uid="uid://cuu0ecww5jm14" path="res://board-game/cell_button.tscn" id="4_fkgxq"]
+[ext_resource type="PackedScene" uid="uid://xppx78ic84bw" path="res://board-game/port_button.tscn" id="5_6juyq"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_py01y"]
-noise_type = 5
+noise_type = 0
 seed = 6586
 frequency = 1.0
 fractal_type = 0
@@ -17,18 +20,20 @@ noise = SubResource("FastNoiseLite_py01y")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qfmgf"]
 shader = ExtResource("1_8h4js")
-shader_parameter/text_color = Color(0.6, 1, 0, 1)
-shader_parameter/background_color = Color(0.13, 0.1157, 0.115938, 1)
+shader_parameter/less_dense_rain = 4.0
 shader_parameter/chars = ExtResource("2_q1b2k")
 shader_parameter/noise_tex = SubResource("NoiseTexture2D_1b1ec")
+shader_parameter/text_color = Color(0.324, 0.54, 0, 1)
+shader_parameter/background_color = Color(0, 0, 0, 1)
 
-[node name="Board" type="Control"]
+[node name="BoardGame" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_j8wmw")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -38,25 +43,229 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="ColorRect2" type="ColorRect" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/ColorRect2"]
+layout_mode = 2
+offset_top = -4.0
+offset_right = 720.0
+offset_bottom = -4.0
 
 [node name="ColorRect" type="ColorRect" parent="VBoxContainer"]
 material = SubResource("ShaderMaterial_qfmgf")
-custom_minimum_size = Vector2(0, 720)
+custom_minimum_size = Vector2(0, 1080)
 layout_mode = 2
 size_flags_vertical = 6
 
-[node name="GridContainer" type="GridContainer" parent="VBoxContainer/ColorRect"]
+[node name="board" type="GridContainer" parent="VBoxContainer/ColorRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+columns = 8
 
-[node name="Button" type="Button" parent="VBoxContainer/ColorRect/GridContainer"]
+[node name="CellButton" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
 layout_mode = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+[node name="CellButton2" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
 layout_mode = 2
+
+[node name="CellButton3" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="PortButton" parent="VBoxContainer/ColorRect/board" instance=ExtResource("5_6juyq")]
+layout_mode = 2
+
+[node name="PortButton2" parent="VBoxContainer/ColorRect/board" instance=ExtResource("5_6juyq")]
+layout_mode = 2
+
+[node name="CellButton4" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="CellButton5" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="CellButton6" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="CellButton13" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="CellButton14" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="CellButton15" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="CellButton16" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="CellButton17" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="CellButton18" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="CellButton19" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="CellButton20" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="CellButton21" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="CellButton22" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="CellButton23" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="CellButton24" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="CellButton25" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="CellButton26" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="CellButton27" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="CellButton28" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="CellButton29" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="CellButton30" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="CellButton31" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="CellButton32" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="CellButton33" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="CellButton34" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="CellButton35" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="CellButton36" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="CellButton37" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="CellButton38" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="CellButton39" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="CellButton40" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="CellButton41" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="CellButton42" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="CellButton43" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="CellButton44" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="CellButton45" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="CellButton46" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="CellButton47" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="CellButton48" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="CellButton49" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="CellButton50" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="CellButton51" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="CellButton52" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="CellButton53" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="CellButton54" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="CellButton55" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="CellButton56" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="CellButton57" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="CellButton58" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="CellButton59" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="CellButton60" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="CellButton7" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="CellButton8" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="CellButton9" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="PortButton3" parent="VBoxContainer/ColorRect/board" instance=ExtResource("5_6juyq")]
+layout_mode = 2
+
+[node name="PortButton4" parent="VBoxContainer/ColorRect/board" instance=ExtResource("5_6juyq")]
+layout_mode = 2
+
+[node name="CellButton10" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="CellButton11" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="CellButton12" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
+layout_mode = 2
+
+[node name="ColorRect3" type="ColorRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/ColorRect3"]
+layout_mode = 2
+offset_top = -4.0
+offset_right = 720.0
+offset_bottom = -4.0
