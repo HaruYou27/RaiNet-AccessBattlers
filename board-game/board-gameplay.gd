@@ -1,11 +1,9 @@
+class_name GlobalGameplay
 extends Control
 
+var pending_card := -1
+var card_list := {}
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func select_cell(pos:int) -> void:
+	if pending_card > 0:
+		pass

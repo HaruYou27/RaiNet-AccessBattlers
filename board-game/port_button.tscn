@@ -4,6 +4,7 @@
 
 [sub_resource type="Theme" id="Theme_hq123"]
 default_font = ExtResource("1_oge84")
+default_font_size = 80
 
 [node name="PortButton" type="Button"]
 size_flags_horizontal = 3
