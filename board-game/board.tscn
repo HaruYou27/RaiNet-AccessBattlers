@@ -1,31 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://71ys478gwh0c"]
+[gd_scene load_steps=6 format=3 uid="uid://71ys478gwh0c"]
 
-[ext_resource type="Shader" path="res://board-game/matrix-rain.gdshader" id="1_8h4js"]
 [ext_resource type="Script" path="res://board-game/board-gameplay.gd" id="1_j8wmw"]
-[ext_resource type="Texture2D" uid="uid://cn0j1i5ssag20" path="res://board-game/characters.png" id="2_q1b2k"]
+[ext_resource type="Material" uid="uid://xyjuy6d6mfq8" path="res://background/numbermatrix.tres" id="2_72ho6"]
 [ext_resource type="PackedScene" uid="uid://cuu0ecww5jm14" path="res://board-game/cell_button.tscn" id="4_fkgxq"]
 [ext_resource type="Script" path="res://tool-script/connect_cell_signal.gd" id="4_wd37p"]
 [ext_resource type="PackedScene" uid="uid://xppx78ic84bw" path="res://board-game/port_button.tscn" id="5_6juyq"]
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_py01y"]
-noise_type = 0
-seed = 6586
-frequency = 1.0
-fractal_type = 0
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1b1ec"]
-width = 32
-height = 32
-generate_mipmaps = false
-noise = SubResource("FastNoiseLite_py01y")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qfmgf"]
-shader = ExtResource("1_8h4js")
-shader_parameter/less_dense_rain = 4.0
-shader_parameter/chars = ExtResource("2_q1b2k")
-shader_parameter/noise_tex = SubResource("NoiseTexture2D_1b1ec")
-shader_parameter/text_color = Color(0.324, 0.54, 0, 1)
-shader_parameter/background_color = Color(0, 0, 0, 1)
 
 [node name="BoardGame" type="Control"]
 layout_mode = 3
@@ -55,7 +34,7 @@ offset_right = 720.0
 offset_bottom = -4.0
 
 [node name="ColorRect" type="ColorRect" parent="VBoxContainer"]
-material = SubResource("ShaderMaterial_qfmgf")
+material = ExtResource("2_72ho6")
 custom_minimum_size = Vector2(0, 1080)
 layout_mode = 2
 size_flags_vertical = 6
@@ -70,7 +49,6 @@ grow_vertical = 2
 columns = 8
 script = ExtResource("4_wd37p")
 connect2node = NodePath("../../..")
-disconnect = null
 
 [node name="CellButton" parent="VBoxContainer/ColorRect/board" instance=ExtResource("4_fkgxq")]
 layout_mode = 2

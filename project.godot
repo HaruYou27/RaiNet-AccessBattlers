@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="RaiNet AccessBattlers"
+run/main_scene="res://main-menu/MainMenu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -19,9 +20,25 @@ config/icon="res://icon.svg"
 window/size/viewport_width=1080
 window/size/viewport_height=1440
 window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 window/handheld/orientation=1
+
+[editor]
+
+version_control/plugin_name="GitPlugin"
+version_control/autoload_on_startup=true
+
+[importer_defaults]
+
+wav={
+"compress/mode": 1,
+"edit/trim": true,
+"force/8_bit": true,
+"force/mono": true
+}
 
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true

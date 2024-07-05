@@ -1,0 +1,27 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://xyjuy6d6mfq8"]
+
+[ext_resource type="Shader" path="res://background/matrix-rain.gdshader" id="1_u7l16"]
+[ext_resource type="Texture2D" uid="uid://cn0j1i5ssag20" path="res://background/characters.png" id="2_5r6t2"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_py01y"]
+noise_type = 0
+seed = 6586
+frequency = 1.0
+fractal_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1b1ec"]
+width = 64
+height = 64
+generate_mipmaps = false
+noise = SubResource("FastNoiseLite_py01y")
+
+[resource]
+shader = ExtResource("1_u7l16")
+shader_parameter/less_dense_rain = 4.0
+shader_parameter/noise_resolution = 64.0
+shader_parameter/animate_speed = 0.5
+shader_parameter/move_speed = 0.2
+shader_parameter/text_color = Color(0.324, 0.54, 0, 1)
+shader_parameter/background_color = Color(0, 0, 0, 1)
+shader_parameter/chars = ExtResource("2_5r6t2")
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_1b1ec")
